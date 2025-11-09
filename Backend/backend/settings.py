@@ -1,17 +1,15 @@
 import os
 from pathlib import Path
 
-# --------------------------------------------------
-# BASE DIRECTORY
-# --------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# --------------------------------------------------
+# -------------------------------------------------
 # SECURITY SETTINGS
 # --------------------------------------------------
 SECRET_KEY = '14032005'  # replace this later for production
 DEBUG = True
 ALLOWED_HOSTS = ['*']  # allows local testing
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # --------------------------------------------------
 # INSTALLED APPS
@@ -42,7 +40,7 @@ MIDDLEWARE = [
 # --------------------------------------------------
 # ROOT URLS
 # --------------------------------------------------
-ROOT_URLCONF = 'backend.urls'
+ROOT_URLCONF = 'Backend.backend.urls'
 
 # --------------------------------------------------
 # TEMPLATE SETTINGS
@@ -64,7 +62,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.wsgi.application'
+WSGI_APPLICATION = 'Backend.backend.wsgi.application'
 
 # --------------------------------------------------
 # DATABASE (SQLite default)
