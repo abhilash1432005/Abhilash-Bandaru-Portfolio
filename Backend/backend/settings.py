@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # --------------------------------------------------
 # SECURITY SETTINGS
 # --------------------------------------------------
-SECRET_KEY = 'your-secret-key-here'  # replace this later for production
+SECRET_KEY = '14032005'  # replace this later for production
 DEBUG = True
 ALLOWED_HOSTS = ['*']  # allows local testing
 
