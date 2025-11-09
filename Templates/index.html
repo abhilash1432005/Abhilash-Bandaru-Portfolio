@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- ===========================
+     HERO SECTION
+=========================== -->
+<section id="hero" class="py-5 bg-light fade-in" style="padding-top: 110px;">
+  <div class="container d-flex flex-column flex-md-row align-items-center gap-4 text-center text-md-start">
+
+    <!-- Profile Image -->
+    <img src="{% static 'images/profile.jpg' %}" alt="profile" class="profile-photo shadow-sm">
+
+    <!-- Hero Text -->
+    <div>
+      <h1 class="display-6 fw-bold gradient-text">Abhilash Bandaru</h1>
+      <p class="lead mb-3">
+        BTech CSE • AI & IPA | Open to Work | Python Developer | Web Developer
+      </p>
+
+      <!-- Buttons -->
+      <div class="mb-3">
+        <a href="#contact" class="btn btn-primary me-2 mb-2">Hire Me</a>
+        <a href="{% static 'images/Abhilash Bandaru_Resume.pdf' %}" class="btn btn-outline-secondary mb-2" target="_blank">Download Resume</a>
+      </div>
+
+      <!-- Social Links -->
+      <div class="d-flex justify-content-center justify-content-md-start align-items-center gap-3 mt-2">
+        <a href="https://github.com/abhilash1432005" target="_blank" class="social-link" title="GitHub Profile">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="38" height="38">
+        </a>
+        <a href="https://www.linkedin.com/in/abhilash-bandaru-" target="_blank" class="social-link" title="LinkedIn Profile">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="38" height="38">
+        </a>
+        <a href="https://www.instagram.com/abhi_naidu_bandaru/" target="_blank" class="social-link" title="Instagram Profile">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="38" height="38">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     ABOUT SECTION
+=========================== -->
+<section id="about" class="py-5 fade-in">
+  <div class="container">
+    <h2>About</h2>
+    <p>
+      I’m an enthusiastic Computer Science undergraduate specializing in
+      <strong>Artificial Intelligence</strong> and
+      <strong>Intelligent Process Automation</strong> — passionate about turning data-driven ideas into impactful solutions.
+      I love exploring how intelligent systems can simplify complex problems and make everyday processes smarter.
+    </p>
+    <p>
+      With a strong foundation in <strong>Python</strong>, <strong>Machine Learning</strong>, and <strong>Data Analytics</strong>,
+      I’ve gained hands-on experience developing algorithms and building projects using libraries like
+      <strong>NumPy</strong> and <strong>Pandas</strong>. I’m also familiar with modern frameworks and cloud technologies
+      that power scalable AI applications.
+    </p>
+    <p>
+      Curious by nature and driven by innovation, I’m constantly learning, experimenting, and collaborating on projects
+      that bridge technology with real-world needs. Whether it’s automating a process or designing a predictive model,
+      I strive to build solutions that are not just functional — but meaningful.
+    </p>
+  </div>
+</section>
+
+<!-- ===========================
+     PROJECTS SECTION
+=========================== -->
+<section id="projects" class="py-5 bg-light fade-in">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="row">
+      {% for p in projects %}
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm hover-card">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ p.title }}</h5>
+            <p class="card-text">{{ p.description }}</p>
+            <div class="mt-auto">
+              <a href="{{ p.github }}" target="_blank" class="btn btn-sm btn-outline-dark me-2">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     SKILLS SECTION
+=========================== -->
+<section id="skills" class="py-5 bg-light fade-in">
+  <div class="container text-center">
+    <h2 class="mb-4">Technical Skills</h2>
+    <div class="row justify-content-center">
+      {% for skill in skills %}
+      <div class="col-6 col-md-4 col-lg-2 mb-4">
+        <div class="skill-card p-3 border-0 shadow-sm rounded h-100">
+          <img src="{{ skill.icon }}" alt="{{ skill.name }}" class="img-fluid mb-2 skill-icon" />
+          <p class="fw-semibold mt-2">{{ skill.name }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     CERTIFICATIONS SECTION
+=========================== -->
+<section id="certifications" class="py-5 bg-light fade-in">
+  <div class="container">
+    <h2 class="text-center mb-4">Certifications</h2>
+    <div class="row justify-content-center">
+      {% for cert in certifications %}
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card border-0 shadow-sm h-100 hover-card">
+          <a href="{% static cert.pdf %}" target="_blank">
+            <div class="cert-overlay">
+              <img src="{% static cert.image %}" alt="{{ cert.title }}" class="card-img-top rounded-top cert-image">
+              <div class="overlay-text">Click to view PDF</div>
+            </div>
+          </a>
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ cert.title }}</h5>
+            <p class="text-muted mb-1">{{ cert.provider }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     EDUCATION TIMELINE
+=========================== -->
+<section id="education-roadmap" class="py-5 fade-in">
+  <div class="container">
+    <h2 class="er-title text-center mb-5">Education Journey</h2>
+
+    <div class="er-timeline">
+      <div class="er-item er-left">
+        <div class="er-dot">🎓</div>
+        <div class="er-panel">
+          <h3>Bachelor of Technology (B.Tech)</h3>
+          <h4>Computer Science &amp; Engineering</h4>
+          <p><strong>CGPA:</strong> 8.91</p>
+          <p><strong>KL University</strong>, Vijayawada</p>
+          <span class="er-year">2022 — 2026</span>
+        </div>
+      </div>
+
+      <div class="er-item er-right">
+        <div class="er-dot">🏫</div>
+        <div class="er-panel">
+          <h3>Intermediate (12th Grade)</h3>
+          <h4>Course: MPC</h4>
+          <p><strong>Percentage:</strong> 76.7%</p>
+          <p><strong>DKNP Jr. College</strong>, Vissannapeta</p>
+          <span class="er-year">2020 — 2022</span>
+        </div>
+      </div>
+
+      <div class="er-item er-left">
+        <div class="er-dot">📘</div>
+        <div class="er-panel">
+          <h3>SSC (10th Grade)</h3>
+          <p><strong>Percentage:</strong> 93.5%</p>
+          <p><strong>Sri Chaitanya High School</strong>, Vissannapeta</p>
+          <span class="er-year">2019 — 2020</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     EXPERIENCE SECTION
+=========================== -->
+<section id="experience" class="py-5 fade-in">
+  <div class="container">
+    <h2 class="exp-title text-center mb-5">Experience & Leadership</h2>
+
+    <div class="exp-timeline">
+      <div class="exp-item">
+        <div class="exp-dot">🧠</div>
+        <div class="exp-content shadow-sm">
+          <h3>Vice President</h3>
+          <h4>Cryptography Club, KL University</h4>
+          <p>
+            Serving as the <strong>Vice-President</strong> under the University’s Technical Clubs, leading initiatives focused on
+            <strong>data security, encryption, and algorithmic problem-solving</strong>.
+          </p>
+          <p>
+            Collaborated with faculty mentors and peers to organize workshops, coding sessions, and capture-the-flag (CTF)
+            events that foster cryptographic awareness and technical excellence.
+          </p>
+          <span class="exp-duration">2023 — 2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     CONTACT SECTION
+=========================== -->
+<section id="contact" class="py-5 fade-in">
+  <div class="container">
+    <h2>Contact</h2>
+    <form id="contactForm" method="POST" action="/contact/">
+      <div class="mb-3">
+        <label class="form-label">Your Name</label>
+        <input type="text" name="name" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Your Email</label>
+        <input type="email" name="email" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Message</label>
+        <textarea name="message" rows="6" class="form-control" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+
+    <div id="msg-status" class="mt-3" style="display:none;"></div>
+  </div>
+</section>
+
+<!-- ===========================
+     QUICK INFO SECTION
+=========================== -->
+<section id="quick-info" class="fade-in text-center">
+  <div class="container">
+    <div class="quick-card mx-auto p-4">
+      <h3>Quick Info</h3>
+      <p>Open to internships & full-time roles in Software Developer / ML / Web Development</p>
+      <div class="d-flex justify-content-center gap-3 mt-3">
+        <a href="https://github.com/abhilash1432005" target="_blank" class="social-link" title="GitHub Profile">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="38" height="38" alt="GitHub">
+        </a>
+        <a href="https://www.linkedin.com/in/abhilash-bandaru-" target="_blank" class="social-link" title="LinkedIn Profile">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="38" height="38" alt="LinkedIn">
+        </a>
+        <a href="https://www.instagram.com/abhi_naidu_bandaru/" target="_blank" class="social-link" title="Instagram Profile">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" width="38" height="38" alt="Instagram">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.querySelector('#contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  const response = await fetch(form.action, { method: 'POST', body: formData });
+  const data = await response.json();
+  const msgBox = document.getElementById('msg-status');
+
+  msgBox.style.display = 'block';
+  msgBox.className = data.success ? 'alert alert-success' : 'alert alert-danger';
+  msgBox.innerText = data.message;
+
+  if (data.success) form.reset();
+});
+</script>
+{% endblock %}
