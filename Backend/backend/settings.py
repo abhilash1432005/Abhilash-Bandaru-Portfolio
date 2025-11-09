@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',  # ✅ Required for collectstatic
-    'contact',  # your app
+    'Backend.contact',  # your app
 ]
 
 # ---------------------------
