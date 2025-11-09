@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Backend.contact',
     # add your app name here (for example: 'contact')
 ]
 
