@@ -1,11 +1,19 @@
 import os
 from pathlib import Path
+import dj_database_url
 
+# ================================
+# BASE SETTINGS
+# ================================
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-temp-12345')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = ['*']
 
+# ================================
+# INSTALLED APPS
+# ================================
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -13,12 +21,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Backend.contact',  # ✅ your app
+    'Backend.contact',  # your app
 ]
 
+# ================================
+# MIDDLEWARE
+# ================================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ✅ static files for Render
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # must be here for Render static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -29,11 +40,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Backend.backend.urls'
 
-# ✅ ADD THIS SECTION:
+# ================================
+# TEMPLATES
+# ================================
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # ✅ points to your Templates folder
+        # 👇 Make sure your folder is "Templates" with capital T inside Backend/
+        'DIRS': [BASE_DIR / 'Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -48,14 +62,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Backend.backend.wsgi.application'
 
-# ✅ Static settings for Render
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-import dj_database_url
-
-# Default: use local SQLite
+# ================================
+# DATABASE CONFIGURATION
+# ================================
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -63,23 +72,43 @@ DATABASES = {
     }
 }
 
-# If Render provides DATABASE_URL (PostgreSQL), override it automatically
+# Automatically switch to Render’s Postgres DB if available
 DATABASE_URL = os.getenv('DATABASE_URL')
 if DATABASE_URL:
     DATABASES['default'] = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
-# ================================
-# 📧 EMAIL CONFIGURATION
-# ================================
-import os
 
+# ================================
+# STATIC FILES CONFIGURATION
+# ================================
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',      # e.g., Backend/static/
+]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Optional: Media settings (if you want to upload files later)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# ================================
+# EMAIL CONFIGURATION (Gmail SMTP)
+# ================================
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-# Fetch from environment variables for security
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER or "no-reply@example.com"
 
+# ================================
+# OTHER DJANGO SETTINGS
+# ================================
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'Asia/Kolkata'
+USE_I18N = True
+USE_TZ = True
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

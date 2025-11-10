@@ -7,6 +7,10 @@
     <list default="true" id="9bf19266-b3a5-42ad-ae11-a03d5fc9c23c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/backend/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/staticfiles/CSS/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/staticfiles/CSS/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,22 +41,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.app.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "F:/Portfolio1",
-    "settings.editor.selected.configurable": "configurable.group.language"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Portfolio1&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Portfolio\static\images" />
       <recent name="F:\Portfolio\static\Certifications" />
       <recent name="F:\Portfolio\static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Portfolio\Backend" />
+      <recent name="F:\Portfolio" />
     </key>
   </component>
   <component name="RunManager">

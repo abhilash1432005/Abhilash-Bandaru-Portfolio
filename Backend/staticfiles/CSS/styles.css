@@ -1155,4 +1155,10 @@ section {
     left: 10px;
   }
 }
+.skill-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
 
