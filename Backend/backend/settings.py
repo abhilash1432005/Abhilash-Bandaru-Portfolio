@@ -47,7 +47,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 👇 Make sure your folder is "Templates" with capital T inside Backend/
-        'DIRS': [BASE_DIR / 'Templates'],
+        'DIRS': [BASE_DIR.parent / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
