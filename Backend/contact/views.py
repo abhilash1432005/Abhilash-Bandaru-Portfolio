@@ -88,29 +88,34 @@ def home(request):
     })
 
 
+from django.core.mail import send_mail
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+
 @csrf_exempt
-def contact_api(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
+def contact_view(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
 
         if not (name and email and message):
-            return JsonResponse({'success': False, 'message': '⚠️ All fields are required.'})
+            return JsonResponse({"success": False, "message": "Please fill out all fields."})
 
         try:
-            subject = f"New message from {name}"
+            subject = f"Portfolio Contact Form: {name}"
             body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
 
             send_mail(
                 subject,
                 body,
-                'bandaruabhilash2005@gmail.com',
-                ['bandaruabhilash2005@gmail.com'],
+                settings.DEFAULT_FROM_EMAIL,
+                [settings.EMAIL_HOST_USER],  # You’ll receive it here
                 fail_silently=False,
             )
-            return JsonResponse({'success': True, 'message': '✅ Message sent successfully!'})
+            return JsonResponse({"success": True, "message": "✅ Message sent successfully!"})
         except Exception as e:
-            return JsonResponse({'success': False, 'message': f'❌ Failed to send: {e}'})
+            return JsonResponse({"success": False, "message": f"❌ Failed to send: {e}"})
 
-    return JsonResponse({'success': False, 'message': 'Invalid request method.'})
+    return JsonResponse({"success": False, "message": "Invalid request."})
